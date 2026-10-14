@@ -8,21 +8,14 @@
 
   /* ---------- keuzes ---------- */
   const NIVEAUS = [
-    { v: 1, em: "🐢", t: "Rustig", u: "Ik lees nog liever niet te moeilijke boeken" },
-    { v: 2, em: "🐇", t: "Goed", u: "Ik lees lekker vlot" },
-    { v: 3, em: "🚀", t: "Supergoed", u: "Ik kan ook moeilijke en dikke boeken aan" },
+    { v: 1, em: "🌱", t: "M5", u: "AVI" },
+    { v: 2, em: "🌿", t: "E5", u: "AVI" },
+    { v: 3, em: "🌳", t: "M6", u: "AVI" },
+    { v: 4, em: "🚀", t: "E6", u: "AVI" },
+    { v: 5, em: "🏆", t: "Plus", u: "AVI" },
   ];
-  const DIKTES = [
-    { v: 1, em: "📄", t: "Dun", u: "Snel uit" },
-    { v: 2, em: "📘", t: "Gemiddeld", u: "Lekker lang" },
-    { v: 3, em: "📚", t: "Dik", u: "Veel om in te duiken" },
-    { v: 0, em: "🤷", t: "Maakt niet uit", u: "" },
-  ];
-  const PLAATJES = [
-    { v: 3, em: "🖼️", t: "Veel plaatjes", u: "Of een stripboek" },
-    { v: 1, em: "📖", t: "Vooral tekst", u: "Ik hou van lange verhalen" },
-    { v: 0, em: "🤷", t: "Maakt niet uit", u: "" },
-  ];
+  // AVI-keuze van het kind -> niveau 1-3 in de boekendatabase (1 = M5–E5, 2 = M6–E6, 3 = Plus)
+  const AVI_NAAR_NIVEAU = { 1: 1, 2: 1, 3: 2, 4: 2, 5: 3 };
   const GENRES = [
     { k: "grappig", em: "😂", t: "Grappig" },
     { k: "spannend", em: "😱", t: "Spannend" },
@@ -92,11 +85,9 @@
   /* ---------- vragen (volgorde van het beeldscherm) ---------- */
   const THEMAS = ["geel", "roze", "blauw", "groen", "oranje", "paars"];
   const STAPPEN = [
-    { id: "niveau", type: "enkel", vraag: "Hoe goed lees je?", sub: "Kies wat het beste bij jou past", opties: NIVEAUS, kleur: "roze", klass: "drie" },
-    { id: "dikte", type: "enkel", vraag: "Hoe dik mag je boek zijn?", sub: "", opties: DIKTES, kleur: "blauw" },
-    { id: "plaatjes", type: "enkel", vraag: "Wil je plaatjes in je boek?", sub: "", opties: PLAATJES, kleur: "groen", klass: "drie" },
-    { id: "genres", type: "meer", max: 3, vraag: "Wat voor verhaal wil je?", sub: "Kies er maximaal 3", opties: GENRES.map((g) => ({ v: g.k, em: g.em, t: g.t })), kleur: "oranje" },
+    { id: "niveau", type: "enkel", vraag: "Welk AVI-niveau lees je?", sub: "Tik op jouw niveau", opties: NIVEAUS, kleur: "roze", klass: "vijf" },
     { id: "hobbys", type: "hobby", max: 3, vraag: "Wat vind je leuk om te doen?", sub: "Kies er maximaal 3", kleur: "paars" },
+    { id: "genres", type: "meer", max: 3, vraag: "Wat voor verhaal wil je?", sub: "Kies er maximaal 3, of sla over", opties: GENRES.map((g) => ({ v: g.k, em: g.em, t: g.t })), kleur: "oranje", optioneel: true },
   ];
 
   /* ---------- toestand ---------- */
@@ -165,8 +156,9 @@
       const klaar = n.querySelector("#klaar");
       const upd = () => {
         knoppen.forEach((b) => b.classList.toggle("aan", sel.includes(b.dataset.v)));
-        klaar.disabled = sel.length === 0;
-        klaar.classList.toggle("pulse", sel.length > 0);
+        klaar.disabled = !s.optioneel && sel.length === 0;
+        klaar.textContent = sel.length || !s.optioneel ? "Zoek mijn boek! ➜" : "Overslaan ➜";
+        klaar.classList.toggle("pulse", !klaar.disabled);
       };
       knoppen.forEach((b) => (b.onclick = () => {
         const v = b.dataset.v, p = sel.indexOf(v);
@@ -193,7 +185,7 @@
       <div class="keuzes hobbys">${kn}</div>
       <div class="actie-rij vast">
         <button class="tekst-keuze" id="anders">✏️ Iets anders…</button>
-        <button class="groot-knop klein" id="klaar">Zoek mijn boek! ➜</button>
+        <button class="groot-knop klein" id="klaar">Volgende ➜</button>
       </div>
     </section>`);
     n.querySelector("#terug").onclick = () => vraag(i - 1);
@@ -250,7 +242,7 @@
     let s = 0;
     const redenen = { hobbys: [], genres: [], extra: [] };
     // leesniveau (te moeilijk telt zwaar)
-    const dn = b.niveau - antw.niveau;
+    const dn = b.niveau - (AVI_NAAR_NIVEAU[antw.niveau] || 2);
     s += dn > 0 ? -45 * dn : dn === 0 ? 12 : dn === -1 ? 5 : -3;
     // dikte
     if (antw.dikte) { const d = Math.abs(b.dikte - antw.dikte); s += d === 0 ? 8 : d === 1 ? 0 : -8; }

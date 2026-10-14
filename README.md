@@ -1,6 +1,6 @@
 # Boekenhulp
 
-Adviesapp voor de boekenkast van groep 5 en 6: het kind beantwoordt 5 vragen en krijgt 3 boeken voorgesteld (met "Nog meer boeken" voor de volgende 3). Geen uitleenfunctie, geen accounts, geen internet nodig tijdens gebruik.
+Adviesapp voor de boekenkast van groep 5 en 6: het kind beantwoordt 3 vragen (AVI-niveau, hobby, soort verhaal; de laatste mag overgeslagen worden) en krijgt 3 boeken voorgesteld (met "Nog meer boeken" voor de volgende 3). Geen uitleenfunctie, geen accounts, geen internet nodig tijdens gebruik.
 
 ## Uitproberen
 Dubbelklik op `index.html` (of sleep het bestand in Chrome/Safari).
@@ -36,7 +36,7 @@ python3 tools/haal_covers.py     # (optioneel) ontbrekende omslagen zoeken bij O
 Een eigen omslag? Zet `covers/<id>.jpg` neer en draai `maak_boeken.py`. Boeken zonder omslag krijgen een gekleurde kaft met de titel.
 
 ## Hoe wordt het advies berekend?
-`score()` in `app.js`: leesniveau (te moeilijk telt zwaar mee), dikte, plaatjes, gekozen genres en hobby's tellen punten op; er komt een klein toeval bij zodat een tweede kind niet altijd hetzelfde krijgt, en er staat nooit twee keer dezelfde auteur in één rijtje van 3.
+`score()` in `app.js`: leesniveau (AVI M5/E5 → niveau 1, M6/E6 → 2, Plus → 3; te moeilijk telt zwaar mee), gekozen genres en hobby's tellen punten op; er komt een klein toeval bij zodat een tweede kind niet altijd hetzelfde krijgt, en er staat nooit twee keer dezelfde auteur in één rijtje van 3.
 
 ## Hobby's die de app niet kent
 Bij "Iets anders…" kan een kind een woord typen. `SYNONIEMEN` in `app.js` koppelt woorden aan hobby's/thema's. Woorden die niet herkend worden, worden op de tablet bewaard. Bekijken: open de site in de browser van de tablet/computer en typ in de console `localStorage.getItem('onbekendeHobbys')`. Voeg de vaakst voorkomende woorden toe aan `SYNONIEMEN`.
