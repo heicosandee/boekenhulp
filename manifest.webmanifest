@@ -1,0 +1,10 @@
+{
+  "name": "Boekenhulp",
+  "short_name": "Boekenhulp",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "background_color": "#ffd43b",
+  "theme_color": "#ffd43b",
+  "lang": "nl",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
