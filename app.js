@@ -108,6 +108,7 @@
   const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
   function toon(node, kleur) {
+    stopCamera();
     document.body.dataset.theme = kleur || "geel";
     app.replaceChildren(node);
     window.scrollTo(0, 0);
@@ -120,14 +121,25 @@
       <div class="mascotte">🦉</div>
       <h1>Welk boek<br>past bij jou?</h1>
       <p class="sub">Beantwoord een paar vragen, dan zoek ik de leukste boeken voor je uit!</p>
-      <button class="groot-knop pulse" id="start">Zoek mijn boek! ➜</button>
+      <div class="actie-rij">
+        <button class="groot-knop pulse" id="start">Zoek mijn boek! ➜</button>
+        <button class="groot-knop klein sec" id="review">✍️ Boekreview schrijven</button>
+      </div>
     </section>`);
     n.querySelector("#start").onclick = () => vraag(0);
+    n.querySelector("#review").onclick = reviewStart;
+    // voor de leerkracht: 5x op de uil tikken = alle reviews wissen
+    let tikken = 0;
+    n.querySelector(".mascotte").onclick = () => {
+      if (++tikken < 5) return;
+      tikken = 0;
+      if (confirm("Alle reviews op deze tablet wissen?")) reviewsWissen();
+    };
     toon(n, "geel");
   }
 
-  function kop(i) {
-    const dots = STAPPEN.map((_, j) => `<i class="${j < i ? "klaar" : j === i ? "nu" : ""}"></i>`).join("");
+  function kop(i, aantal = STAPPEN.length) {
+    const dots = Array.from({ length: aantal }, (_, j) => `<i class="${j < i ? "klaar" : j === i ? "nu" : ""}"></i>`).join("");
     return `<div class="top"><button class="knop-terug" id="terug" aria-label="Terug">⬅</button><div class="voortgang">${dots}</div><div class="ruimte"></div></div>`;
   }
 
@@ -255,6 +267,12 @@
     const tel = (tags) => { let m = 0; for (const [t, w] of Object.entries(tags)) if (b.themas.includes(t)) m = Math.max(m, w); return m; };
     antw.hobbys.forEach((k) => { const m = tel(HOBBY_PER_KEY[k].tags); if (m) { s += 8 + m * 6; if (m >= 2) redenen.hobbys.push(k); } });
     extraTags.forEach((tags) => { const m = tel(tags); if (m) { s += 8 + m * 6; } });
+    // reviews van andere kinderen
+    const rvw = reviewStat(b.id);
+    if (rvw) {
+      if (rvw.n >= 2 && rvw.gem >= 4) s += 3;
+      antw.hobbys.forEach((k) => { if (rvw.hobbys.some(([h]) => h === k)) s += 6; });
+    }
     s += Math.random() * 4; // variatie bij herhaald spelen
     return { s, redenen };
   }
@@ -287,17 +305,20 @@
 
   const AVI = { 1: "AVI M5–E5", 2: "AVI M6–E6", 3: "AVI Plus" };
   const DIK = { 1: "dun boek", 2: "gemiddeld boek", 3: "dik boek" };
+  function omslagHtml(b) {
+    const kleur = ["#ff7ab8", "#5ab8ff", "#6be07a", "#ffa24a", "#a78bfa", "#ffd43b"][b.titel.length % 6];
+    return b.omslag
+      ? `<div class="omslag"><img src="${b.omslag}" alt="Omslag van ${esc(b.titel)}" loading="lazy" onerror="this.parentNode.classList.add('eigen');this.parentNode.style.background='${kleur}';this.parentNode.textContent='${esc(b.titel).replace(/'/g, "")}'"></div>`
+      : `<div class="omslag eigen" style="background:${kleur}">${esc(b.titel)}</div>`;
+  }
   function kaart(r, nr) {
     const b = r.b;
     const gen = r.redenen.genres.map((g) => GENRES.find((x) => x.k === g)).filter(Boolean).map((g) => `<span class="chip gen">${g.em} ${g.t.toLowerCase()}</span>`);
     const hob = r.redenen.hobbys.map((k) => HOBBY_PER_KEY[k]).map((h) => `<span class="chip hob">${h.em} ${h.t.toLowerCase()}</span>`);
-    const kleur = ["#ff7ab8", "#5ab8ff", "#6be07a", "#ffa24a", "#a78bfa", "#ffd43b"][b.titel.length % 6];
-    const omslag = b.omslag
-      ? `<div class="omslag"><img src="${b.omslag}" alt="Omslag van ${esc(b.titel)}" loading="lazy" onerror="this.parentNode.classList.add('eigen');this.parentNode.style.background='${kleur}';this.parentNode.textContent='${esc(b.titel).replace(/'/g, "")}'"></div>`
-      : `<div class="omslag eigen" style="background:${kleur}">${esc(b.titel)}</div>`;
-    return `<article class="kaart"><div class="rang">${nr}</div>${omslag}
+    return `<article class="kaart"><div class="rang">${nr}</div>${omslagHtml(b)}
       <h3>${esc(b.titel)}</h3><div class="auteur">${esc(b.auteur)}</div>
       <p class="omschr">${esc(b.omschrijving)}</p>
+      ${reviewBlok(b.id)}
       <div class="chips">${hob.join("")}${gen.join("")}<span class="chip niv">⭐ ${AVI[b.niveau]}</span><span class="chip dik">${DIK[b.dikte]}</span></div></article>`;
   }
 
@@ -331,6 +352,183 @@
     }
     document.body.appendChild(w);
     setTimeout(() => w.remove(), 5000);
+  }
+
+  /* ---------- reviews ---------- */
+  // Reviews worden bewaard in de browser van deze tablet (localStorage). Zie README voor delen tussen tablets.
+  const REVIEW_SLEUTEL = "boekenhulp.reviews";
+  const REVIEW_TAGS = [
+    { k: "grappig", em: "😂", t: "Grappig" },
+    { k: "spannend", em: "😱", t: "Spannend" },
+    { k: "ontroerend", em: "🥹", t: "Ontroerend" },
+    { k: "verrassend", em: "🤯", t: "Verrassend" },
+    { k: "leerzaam", em: "🤓", t: "Leerzaam" },
+    { k: "moeilijk", em: "😅", t: "Best moeilijk" },
+    { k: "makkelijk", em: "😌", t: "Lekker makkelijk" },
+    { k: "saai", em: "😴", t: "Een beetje saai" },
+  ];
+  const STER_LABELS = ["Niet zo leuk", "Gaat wel", "Leuk", "Heel leuk", "Supergaaf!"];
+  let revCache = null;
+  function reviewsLaden() {
+    if (!revCache) { try { revCache = JSON.parse(localStorage.getItem(REVIEW_SLEUTEL) || "[]"); } catch (e) { revCache = []; } }
+    return revCache;
+  }
+  function reviewOpslaan(r) {
+    const lijst = reviewsLaden(); lijst.push(r);
+    try { localStorage.setItem(REVIEW_SLEUTEL, JSON.stringify(lijst)); } catch (e) {}
+  }
+  function reviewsWissen() { revCache = []; try { localStorage.removeItem(REVIEW_SLEUTEL); } catch (e) {} }
+  function reviewStat(id) {
+    const rs = reviewsLaden().filter((r) => r.boek === id);
+    if (!rs.length) return null;
+    const tel = (key) => { const o = {}; rs.forEach((r) => r[key].forEach((k) => (o[k] = (o[k] || 0) + 1))); return Object.entries(o).sort((a, b) => b[1] - a[1]); };
+    return { n: rs.length, gem: rs.reduce((s, r) => s + r.sterren, 0) / rs.length, tags: tel("tags"), hobbys: tel("hobbys") };
+  }
+  const sterTekst = (g) => "★".repeat(Math.round(g)) + "☆".repeat(5 - Math.round(g));
+  function reviewBlok(id) {
+    const st = reviewStat(id);
+    if (!st) return `<div class="review leeg">💬 Nog geen reviews. Schrijf jij de eerste?</div>`;
+    const tags = st.tags.slice(0, 2).map(([k, n]) => REVIEW_TAGS.find((x) => x.k === k)).filter(Boolean)
+      .map((t, i) => `<span class="chip rev">${t.em} ${t.t.toLowerCase()}${st.tags[i][1] > 1 ? " ×" + st.tags[i][1] : ""}</span>`).join("");
+    const hob = st.hobbys.slice(0, 3).map(([k]) => HOBBY_PER_KEY[k]).filter(Boolean).map((h) => `${h.em} ${h.t.toLowerCase()}`).join(", ");
+    return `<div class="review"><div class="sterren"><span class="gouden">${sterTekst(st.gem)}</span> <b>${st.gem.toFixed(1).replace(".", ",")}</b> <span>(${st.n} ${st.n === 1 ? "kind" : "kinderen"})</span></div>
+      ${tags ? `<div class="chips">${tags}</div>` : ""}${hob ? `<div class="voor">Leuk als je houdt van ${hob}</div>` : ""}</div>`;
+  }
+
+  let rv; // review die nu wordt ingevuld
+  let camStroom = null, camTimer = null;
+  function stopCamera() {
+    clearInterval(camTimer); camTimer = null;
+    if (camStroom) camStroom.getTracks().forEach((t) => t.stop());
+    camStroom = null;
+  }
+
+  // Scherm 1: boek voor de camera (of, voor de demo, zonder camera kiezen)
+  function reviewStart() {
+    stap = "review-camera";
+    rv = { boek: null, sterren: 0, tags: [], hobbys: [], groep: 0 };
+    const n = el(`<section class="scherm">
+      <div class="top"><button class="knop-terug" id="terug" aria-label="Terug">⬅</button><div class="voortgang"></div><div class="ruimte"></div></div>
+      <h2>Houd je boek voor de camera 📷</h2>
+      <p class="sub" id="status">Even wachten, de camera gaat aan…</p>
+      <div class="camera"><video id="video" playsinline muted autoplay></video><div class="kader"></div></div>
+      <div class="actie-rij"><button class="groot-knop klein" id="kies">🔎 Kies mijn boek zonder camera</button></div>
+    </section>`);
+    n.querySelector("#terug").onclick = welkom;
+    n.querySelector("#kies").onclick = boekKiezer;
+    toon(n, "blauw");
+    startCamera(n.querySelector("#video"), n.querySelector("#status"), n.querySelector(".camera"));
+  }
+  async function startCamera(video, status, kader) {
+    const geen = (tekst) => { status.textContent = tekst; kader.hidden = true; };
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return geen("Geen camera gevonden. Kies je boek zelf uit de lijst.");
+    try {
+      const stroom = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false });
+      if (stap !== "review-camera") { stroom.getTracks().forEach((t) => t.stop()); return; } // al weggeklikt
+      camStroom = stroom;
+      video.srcObject = stroom;
+      if (!("BarcodeDetector" in window)) return (status.textContent = "Deze tablet kan de streepjescode nog niet lezen. Kies je boek zelf uit de lijst.");
+      status.textContent = "Houd de streepjescode van de achterkant in het kader";
+      const det = new BarcodeDetector({ formats: ["ean_13"] });
+      camTimer = setInterval(async () => {
+        try {
+          const codes = await det.detect(video);
+          if (!codes.length) return;
+          const b = BOEKEN.find((x) => x.isbn && x.isbn.replace(/\D/g, "") === codes[0].rawValue);
+          if (b) { stopCamera(); reviewVragen(b, 0); } else status.textContent = "Dit boek ken ik nog niet 🙈 Kies je boek zelf uit de lijst.";
+        } catch (e) {}
+      }, 700);
+    } catch (e) { geen("De camera doet het niet. Geen probleem: kies je boek zelf uit de lijst."); }
+  }
+
+  // Scherm 2: boek uit de lijst kiezen
+  function boekKiezer() {
+    stap = "review-kies";
+    const gesorteerd = BOEKEN.slice().sort((a, b) => a.titel.localeCompare(b.titel, "nl"));
+    const n = el(`<section class="scherm">
+      <div class="top"><button class="knop-terug" id="terug" aria-label="Terug">⬅</button><div class="voortgang"></div><div class="ruimte"></div></div>
+      <h2>Welk boek heb je gelezen?</h2>
+      <p class="sub">Tik op je boek, of typ een stukje van de titel</p>
+      <input class="veld" id="zoek" type="text" placeholder="🔎 Zoek een boek" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+      <div class="kiezer">${gesorteerd.map((b) => `<button class="mini" data-id="${esc(b.id)}" data-zoek="${esc(norm(b.titel + " " + b.auteur))}">${omslagHtml(b)}<span class="t">${esc(b.titel)}</span></button>`).join("")}</div>
+      <p class="hint" id="geen" hidden>Geen boek gevonden 🙈 Probeer een ander woord.</p>
+    </section>`);
+    n.querySelector("#terug").onclick = reviewStart;
+    const knoppen = [...n.querySelectorAll(".mini")];
+    knoppen.forEach((k) => (k.onclick = () => reviewVragen(BOEKEN.find((b) => b.id === k.dataset.id), 0)));
+    n.querySelector("#zoek").oninput = (e) => {
+      const q = norm(e.target.value.trim());
+      let zichtbaar = 0;
+      knoppen.forEach((k) => { const toon = !q || k.dataset.zoek.includes(q); k.hidden = !toon; if (toon) zichtbaar++; });
+      n.querySelector("#geen").hidden = zichtbaar > 0;
+    };
+    toon(n, "blauw");
+  }
+
+  // Scherm 3-6: vragen over het boek
+  function reviewVragen(b, i) {
+    stap = "review-vraag";
+    rv.boek = b.id;
+    const AANTAL = 4;
+    const terug = () => (i === 0 ? boekKiezer() : reviewVragen(b, i - 1));
+    const vooruit = () => (i + 1 < AANTAL ? reviewVragen(b, i + 1) : reviewKlaar(b));
+    const cfg = [
+      { enkel: true, kleur: "oranje", klass: "vijf ster", vraag: "Hoeveel sterren geef je dit boek?", sub: "",
+        opties: STER_LABELS.map((t, j) => ({ v: j + 1, em: "⭐".repeat(j + 1), t })), zet: (v) => (rv.sterren = Number(v)) },
+      { kleur: "roze", max: 3, vraag: "Hoe was het boek?", sub: "Kies er maximaal 3",
+        opties: REVIEW_TAGS.map((t) => ({ v: t.k, em: t.em, t: t.t })), sel: rv.tags },
+      { kleur: "paars", max: 3, optioneel: true, klass: "hobbys", vraag: "Voor wie is dit boek leuk?", sub: "Kinderen die houden van… (maximaal 3, of sla over)",
+        opties: HOBBYS.map((h) => ({ v: h.k, em: h.em, t: h.t })), sel: rv.hobbys },
+      { enkel: true, kleur: "groen", klass: "drie", vraag: "In welke groep zit je?", sub: "",
+        opties: [{ v: 5, em: "5️⃣", t: "Groep 5" }, { v: 6, em: "6️⃣", t: "Groep 6" }, { v: 0, em: "🤐", t: "Zeg ik liever niet" }], zet: (v) => (rv.groep = Number(v)) },
+    ][i];
+    const kn = cfg.opties.map((o) => `<button class="keuze" data-v="${esc(o.v)}"><span class="em">${o.em}</span><span class="t">${esc(o.t)}</span></button>`).join("");
+    const n = el(`<section class="scherm">
+      ${kop(i, AANTAL)}
+      <div class="boekbalk">${omslagHtml(b)}<span>${esc(b.titel)}</span></div>
+      <h2>${esc(cfg.vraag)}</h2><p class="sub">${esc(cfg.sub)}</p>
+      <div class="keuzes ${cfg.klass || ""}">${kn}</div>
+      ${cfg.enkel ? "" : `<div class="actie-rij vast"><button class="groot-knop klein" id="klaar">Volgende ➜</button></div>`}
+    </section>`);
+    n.querySelector("#terug").onclick = terug;
+    const knoppen = [...n.querySelectorAll(".keuze")];
+    if (cfg.enkel) {
+      knoppen.forEach((k) => (k.onclick = () => { cfg.zet(k.dataset.v); k.classList.add("aan"); setTimeout(vooruit, 260); }));
+    } else {
+      const sel = cfg.sel, klaar = n.querySelector("#klaar");
+      const upd = () => {
+        knoppen.forEach((k) => k.classList.toggle("aan", sel.includes(k.dataset.v)));
+        klaar.disabled = !cfg.optioneel && sel.length === 0;
+        klaar.textContent = !sel.length && cfg.optioneel ? "Overslaan ➜" : "Volgende ➜";
+        klaar.classList.toggle("pulse", !klaar.disabled);
+      };
+      knoppen.forEach((k) => (k.onclick = () => {
+        const v = k.dataset.v, p = sel.indexOf(v);
+        if (p >= 0) sel.splice(p, 1); else { if (sel.length >= cfg.max) sel.shift(); sel.push(v); }
+        upd();
+      }));
+      klaar.onclick = vooruit;
+      upd();
+    }
+    toon(n, cfg.kleur);
+  }
+
+  // Scherm 7: opslaan en meteen laten zien hoe de review bij het boek komt te staan
+  function reviewKlaar(b) {
+    stap = "review-klaar";
+    reviewOpslaan({ boek: b.id, sterren: rv.sterren, tags: rv.tags.slice(), hobbys: rv.hobbys.slice(), groep: rv.groep, ts: Date.now() });
+    const n = el(`<section class="scherm">
+      <div class="top"><div class="ruimte"></div><div class="voortgang"></div><div class="ruimte"></div></div>
+      <h2>Bedankt voor je review! 🎉</h2><p class="sub">Zo zien andere kinderen jouw mening bij dit boek:</p>
+      <div class="resultaat een">${kaart({ b, redenen: { genres: [], hobbys: [] } }, "✨")}</div>
+      <div class="resultaat-acties">
+        <button class="groot-knop klein" id="nog">✍️ Nog een review</button>
+        <button class="groot-knop klein" id="begin">🏠 Naar het begin</button>
+      </div></section>`);
+    n.querySelector("#nog").onclick = reviewStart;
+    n.querySelector("#begin").onclick = welkom;
+    toon(n, "geel");
+    sterretjes();
   }
 
   /* ---------- tablet: na een tijdje stilte terug naar begin ---------- */

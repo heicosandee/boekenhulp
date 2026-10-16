@@ -38,6 +38,14 @@ Een eigen omslag? Zet `covers/<id>.jpg` neer en draai `maak_boeken.py`. Boeken z
 ## Hoe wordt het advies berekend?
 `score()` in `app.js`: leesniveau (AVI M5/E5 → niveau 1, M6/E6 → 2, Plus → 3; te moeilijk telt zwaar mee), gekozen genres en hobby's tellen punten op; er komt een klein toeval bij zodat een tweede kind niet altijd hetzelfde krijgt, en er staat nooit twee keer dezelfde auteur in één rijtje van 3.
 
+## Boekreviews
+Op het startscherm staat "Boekreview schrijven". Het kind houdt het boek voor de camera (de streepjescode wordt gelezen) of kiest het boek zelf uit de lijst, en beantwoordt dan 4 tikvragen: sterren, wat voor boek het was, voor wie het leuk is, en de groep. Er wordt bewust geen vrije tekst of naam gevraagd, zodat er niets onbedoelds bij andere kinderen op het scherm komt. De review verschijnt direct bij het boek op de adviespagina (gemiddelde sterren, meest gekozen kenmerken en "leuk als je houdt van …"). Een boek met goede reviews, of reviews van kinderen met dezelfde hobby, komt iets hoger in het advies.
+
+- **Demo zonder camera:** kies "Kies mijn boek zonder camera".
+- **Camera:** werkt alleen op https (GitHub Pages is dat) en alleen als de browser streepjescodes kan lezen (Chrome op Android wel, Safari op iPad nog niet). Een boek wordt herkend via de kolom `isbn` in `boeken.csv`; die is nu nog leeg. Zonder herkenning kiest het kind het boek uit de lijst.
+- **Opslag:** reviews staan in de browser van die ene tablet (localStorage). Wist je de browsergegevens, dan zijn ze weg, en een tweede tablet ziet ze niet. Voor delen tussen tablets of voor goedkeuring door de leerkracht is een kleine server of database nodig.
+- **Wissen (demo):** 5 keer snel op de uil op het startscherm tikken.
+
 ## Hobby's die de app niet kent
 Bij "Iets anders…" kan een kind een woord typen. `SYNONIEMEN` in `app.js` koppelt woorden aan hobby's/thema's. Woorden die niet herkend worden, worden op de tablet bewaard. Bekijken: open de site in de browser van de tablet/computer en typ in de console `localStorage.getItem('onbekendeHobbys')`. Voeg de vaakst voorkomende woorden toe aan `SYNONIEMEN`.
 

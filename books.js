@@ -19,6 +19,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Dolfje is een weerwolfje en moet dat zien te verbergen. Dat levert supergrappige situaties op!",
+  "isbn": "",
   "omslag": "covers/dolfje-weerwolfje.jpg"
  },
  {
@@ -38,6 +39,7 @@ window.BOEKEN = [
    "monsters"
   ],
   "omschrijving": "Een bus vol griezelverhalen. Durf jij ze allemaal te lezen?",
+  "isbn": "",
   "omslag": "covers/de-griezelbus.jpg"
  },
  {
@@ -58,6 +60,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Pluk woont in een kraanwagen en helpt iedereen in de Petteflet. Hij is een echte vriend.",
+  "isbn": "",
   "omslag": "covers/pluk-petteflet.jpg"
  },
  {
@@ -78,6 +81,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Minoes is een kat die in een mens verandert. Ze helpt een journalist aan het ene nieuwtje na het andere.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -97,6 +101,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Otje is een lief meisje met een heel bijzondere vader. Samen beleven ze rare avonturen.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -116,6 +121,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Wiplala is een heel klein tovenaartje dat een gezin op stelten zet.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -136,6 +142,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Een jongetje ontdekt dat hij kan vliegen. Het wordt een wilde reis door de lucht.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -156,6 +163,7 @@ window.BOEKEN = [
    "paarden"
   ],
   "omschrijving": "Tiuri moet een geheime brief naar een andere koning brengen. Een spannende reis vol gevaar!",
+  "isbn": "",
   "omslag": "covers/brief-voor-de-koning.jpg"
  },
  {
@@ -176,6 +184,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Een bos vol geheimen, ridders en gevaarlijke mysteries. Welk geheim ontdek jij?",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -196,6 +205,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Een jongen vaart als kapitein de zee op en beleeft het ene avontuur na het andere.",
+  "isbn": "",
   "omslag": "covers/de-kleine-kapitein.jpg"
  },
  {
@@ -215,6 +225,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Een tovenaar, een koning en een geheimzinnige tuin. Een verhaal vol toverkracht.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -235,6 +246,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Stach mag koning worden, maar dan moet hij eerst een gevaarlijke opdracht uitvoeren.",
+  "isbn": "",
   "omslag": "covers/koning-van-katoren.jpg"
  },
  {
@@ -255,6 +267,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Madelief is een eigenwijs meisje dat altijd haar eigen mening heeft.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -274,6 +287,7 @@ window.BOEKEN = [
    "eten"
   ],
   "omschrijving": "Dik Trom is een goedhartige dikke jongen die altijd anderen wil helpen.",
+  "isbn": "",
   "omslag": "covers/dik-trom.jpg"
  },
  {
@@ -292,6 +306,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Het laatste jaar op de basisschool: spannend, grappig en soms ook een beetje verdrietig.",
+  "isbn": "",
   "omslag": "covers/achtste-groepers.jpg"
  },
  {
@@ -312,6 +327,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Een bende vrienden beleeft spannende avonturen waarbij ze kleurrijke mysteries oplossen.",
+  "isbn": "",
   "omslag": "covers/kameleon.jpg"
  },
  {
@@ -332,6 +348,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Dummie is een mummie die uit zijn graf kruipt en vrienden maakt met Max. Dat wordt grappig!",
+  "isbn": "",
   "omslag": "covers/dummie-de-mummie.jpg"
  },
  {
@@ -352,6 +369,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Pietje Bell is een kwajongen die altijd streken uithaalt. Soms gaat het goed, vaak ook niet.",
+  "isbn": "",
   "omslag": "covers/pietje-bell.jpg"
  },
  {
@@ -373,6 +391,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Drie jongens maken een lange reis op zee vol stormen, ruzies en gevaren.",
+  "isbn": "",
   "omslag": "covers/scheepsjongens-bontekoe.jpg"
  },
  {
@@ -393,6 +412,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Harry gaat naar een school voor tovenaars en komt een geheimzinnige steen op het spoor.",
+  "isbn": "",
   "omslag": "covers/harry-potter-1.jpg"
  },
  {
@@ -413,6 +433,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Er is een geheime kamer op Zweinstein. Wat zit daar en wie opent hem?",
+  "isbn": "",
   "omslag": "covers/harry-potter-2.jpg"
  },
  {
@@ -434,6 +455,7 @@ window.BOEKEN = [
    "zee"
   ],
   "omschrijving": "Percy ontdekt dat hij de zoon van een Griekse god is. Nu moet hij een gestolen bliksem vinden.",
+  "isbn": "",
   "omslag": "covers/percy-jackson-1.jpg"
  },
  {
@@ -455,6 +477,7 @@ window.BOEKEN = [
    "piraten"
   ],
   "omschrijving": "Percy reist door de Zee van Monsters om het Gulden Vlies te vinden.",
+  "isbn": "",
   "omslag": "covers/percy-jackson-2.jpg"
  },
  {
@@ -475,6 +498,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Greg schrijft in zijn dagboek over de middelbare school. Vol tekeningen en grappen!",
+  "isbn": "",
   "omslag": "covers/leven-van-een-loser.jpg"
  },
  {
@@ -496,6 +520,7 @@ window.BOEKEN = [
    "detective"
   ],
   "omschrijving": "Half hond, half politieagent: Dog Man vangt de gemene boeven. Een stripboek!",
+  "isbn": "",
   "omslag": "covers/dog-man.jpg"
  },
  {
@@ -515,6 +540,7 @@ window.BOEKEN = [
    "tekenen"
   ],
   "omschrijving": "Twee jongens hypnotiseren hun directeur, en hij verandert in superheld Kapitein Onderbroek!",
+  "isbn": "",
   "omslag": "covers/kapitein-onderbroek.jpg"
  },
  {
@@ -535,6 +561,7 @@ window.BOEKEN = [
    "techniek"
   ],
   "omschrijving": "Andy en Terry wonen in een gekke boomhut met een bowlingbaan, een zwembad en een haaienbassin.",
+  "isbn": "",
   "omslag": "covers/boomhut-13.jpg"
  },
  {
@@ -555,6 +582,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Matilda is slim en kan dingen met haar gedachten. Dat komt goed uit tegen de gemene directrice.",
+  "isbn": "",
   "omslag": "covers/matilda.jpg"
  },
  {
@@ -576,6 +604,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Sofie ontmoet een vriendelijke reus die dromen vangt. Samen nemen ze het op tegen vieze reuzen.",
+  "isbn": "",
   "omslag": "covers/de-gvr.jpg"
  },
  {
@@ -597,6 +626,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Heksen zijn echt, en ze haten kinderen! Een jongen en zijn oma nemen het tegen hen op.",
+  "isbn": "",
   "omslag": "covers/de-heksen.jpg"
  },
  {
@@ -617,6 +647,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Sjakie wint een gouden kaartje voor de wonderlijke fabriek van meneer Wonka.",
+  "isbn": "",
   "omslag": "covers/sjakie.jpg"
  },
  {
@@ -636,6 +667,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Meneer Vos steelt van drie gemene boeren. Maar de boeren slaan terug!",
+  "isbn": "",
   "omslag": "covers/fantastische-meneer-vos.jpg"
  },
  {
@@ -653,6 +685,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Meneer en mevrouw Twits zijn vies en gemeen. Gelukkig bedenken de dieren een plan.",
+  "isbn": "",
   "omslag": "covers/de-twits.jpg"
  },
  {
@@ -673,6 +706,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Georgie maakt een medicijn voor zijn norse oma, met rare gevolgen.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -691,6 +725,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Meneer Hoppy houdt van mevrouw Zilver en haar schildpad. Hij bedenkt een slim plan.",
+  "isbn": "",
   "omslag": "covers/esio-trot.jpg"
  },
  {
@@ -711,6 +746,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Jaap reist in een gigantische perzik met heel bijzondere insecten.",
+  "isbn": "",
   "omslag": "covers/jaap-reuzenperzik.jpg"
  },
  {
@@ -731,6 +767,7 @@ window.BOEKEN = [
    "heksen"
   ],
   "omschrijving": "Via een kleerkast komen vier kinderen in het magische land Narnia.",
+  "isbn": "",
   "omslag": "covers/leeuw-heks-kleerkast.jpg"
  },
  {
@@ -751,6 +788,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "De kinderen keren terug naar Narnia om Prins Caspian te helpen.",
+  "isbn": "",
   "omslag": "covers/prins-caspian.jpg"
  },
  {
@@ -771,6 +809,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Bilbo gaat met dwergen op reis om een schat te halen van een draak.",
+  "isbn": "",
   "omslag": "covers/de-hobbit.jpg"
  },
  {
@@ -790,6 +829,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Alice volgt een wit konijn en komt in een wereld waar niets logisch is.",
+  "isbn": "",
   "omslag": "covers/alice-in-wonderland.jpg"
  },
  {
@@ -810,6 +850,7 @@ window.BOEKEN = [
    "magie"
   ],
   "omschrijving": "Peter Pan woont in Nooitgedachtland en vliegt met Wendy en haar broertjes tegen Kapitein Haak.",
+  "isbn": "",
   "omslag": "covers/peter-pan.jpg"
  },
  {
@@ -831,6 +872,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Een piloot ontmoet in de woestijn een prins van een andere planeet.",
+  "isbn": "",
   "omslag": "covers/de-kleine-prins.jpg"
  },
  {
@@ -852,6 +894,7 @@ window.BOEKEN = [
    "piraten"
   ],
   "omschrijving": "Pippi is supersterk, heeft een paard en een aap en woont zonder ouders in Villa Kakelbont.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -872,6 +915,7 @@ window.BOEKEN = [
    "monsters"
   ],
   "omschrijving": "Ronja groeit op in een roversburcht en vindt in het bos een vriend.",
+  "isbn": "",
   "omslag": "covers/ronja.jpg"
  },
  {
@@ -893,6 +937,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Twee broers beleven in het land Nangijala een groot avontuur tegen een gemene tiran.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -912,6 +957,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "August ziet er anders uit en gaat voor het eerst naar een gewone school. Een warm en ontroerend verhaal.",
+  "isbn": "",
   "omslag": "covers/wonder.jpg"
  },
  {
@@ -931,6 +977,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Stanley moet in een jeugdkamp gaten graven in de woestijn. Waarom eigenlijk?",
+  "isbn": "",
   "omslag": "covers/gravers.jpg"
  },
  {
@@ -952,6 +999,7 @@ window.BOEKEN = [
    "tekenen"
   ],
   "omschrijving": "Hikkie moet een draak temmen. Dat is nog niet zo makkelijk!",
+  "isbn": "",
   "omslag": "covers/hoe-tem-je-een-draak.jpg"
  },
  {
@@ -971,6 +1019,7 @@ window.BOEKEN = [
    "detective"
   ],
   "omschrijving": "Bens oma lijkt saai, maar ze heeft een groot geheim. Samen plannen ze een kroonjuweel-overval!",
+  "isbn": "",
   "omslag": "covers/gangster-oma.jpg"
  },
  {
@@ -992,6 +1041,7 @@ window.BOEKEN = [
    "techniek"
   ],
   "omschrijving": "Robot Roz strandt op een eiland en moet leren overleven tussen wilde dieren.",
+  "isbn": "",
   "omslag": "covers/wilde-robot.jpg"
  },
  {
@@ -1011,6 +1061,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Varken Wilbur wordt gered door zijn vriendin, de slimme spin Charlotte.",
+  "isbn": "",
   "omslag": "covers/web-van-charlotte.jpg"
  },
  {
@@ -1031,6 +1082,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Stuart is een heel klein jongetje dat op een muis lijkt. Hij beleeft grote avonturen.",
+  "isbn": "",
   "omslag": "covers/stuart-little.jpg"
  },
  {
@@ -1052,6 +1104,7 @@ window.BOEKEN = [
    "zee"
   ],
   "omschrijving": "Mol, Water Rat, Das en de eigenwijze Pad beleven avonturen aan de rivier.",
+  "isbn": "",
   "omslag": "covers/wind-in-de-wilgen.jpg"
  },
  {
@@ -1071,6 +1124,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Mowgli groeit op tussen wolven en leert van beer Baloe en panter Bagheera.",
+  "isbn": "",
   "omslag": "covers/jungleboek.jpg"
  },
  {
@@ -1090,6 +1144,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Het levensverhaal van het paard Black Beauty, door hemzelf verteld.",
+  "isbn": "",
   "omslag": "covers/black-beauty.jpg"
  },
  {
@@ -1109,6 +1164,7 @@ window.BOEKEN = [
    "tekenen"
   ],
   "omschrijving": "Gorilla Ivan woont in een winkelcentrum en tekent graag. Dan komt er een olifantje bij.",
+  "isbn": "",
   "omslag": "covers/ivan-enige-echte.jpg"
  },
  {
@@ -1130,6 +1186,7 @@ window.BOEKEN = [
    "magie"
   ],
   "omschrijving": "Hugo woont in een station en probeert een kapotte robot te repareren. Een boek vol tekeningen.",
+  "isbn": "",
   "omslag": "covers/hugo-cabret.jpg"
  },
  {
@@ -1151,6 +1208,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "George reist met een supercomputer door de ruimte en leert alles over sterren en planeten.",
+  "isbn": "",
   "omslag": "covers/george-heelal.jpg"
  },
  {
@@ -1172,6 +1230,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Huiskat Vuurpoot sluit zich aan bij een clan wilde katten in het bos.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -1192,6 +1251,7 @@ window.BOEKEN = [
    "school"
   ],
   "omschrijving": "Morrigan is vervloekt, maar wordt gered en mag deelnemen aan geheimzinnige proeven.",
+  "isbn": "",
   "omslag": "covers/nevermoor.jpg"
  },
  {
@@ -1212,6 +1272,7 @@ window.BOEKEN = [
    "magie"
   ],
   "omschrijving": "Achter een geheime deur wacht een tweede huis met een andere moeder met knopen als ogen.",
+  "isbn": "",
   "omslag": "covers/coraline.jpg"
  },
  {
@@ -1232,6 +1293,7 @@ window.BOEKEN = [
    "draken"
   ],
   "omschrijving": "Een jonge crimineel ontvoert een fee. Maar feeën hebben slimme technologie!",
+  "isbn": "",
   "omslag": "covers/artemis-fowl.jpg"
  },
  {
@@ -1252,6 +1314,7 @@ window.BOEKEN = [
    "spoken"
   ],
   "omschrijving": "Anton raakt bevriend met een vampier. Samen gaan ze op nachtelijk avontuur.",
+  "isbn": "",
   "omslag": "covers/kleine-vampier.jpg"
  },
  {
@@ -1272,6 +1335,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "De kleine heks wil graag naar het heksenfeest, maar dat mag nog niet.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -1293,6 +1357,7 @@ window.BOEKEN = [
    "techniek"
   ],
   "omschrijving": "Jim en Lukas reizen met hun locomotief Emma de wereld rond en bevrijden een prinses.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -1313,6 +1378,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Dorothy waait met haar hond naar het land Oz en zoekt de weg naar huis.",
+  "isbn": "",
   "omslag": "covers/tovenaar-van-oz.jpg"
  },
  {
@@ -1332,6 +1398,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Een beer uit Peru komt in Londen aan en brengt alles in de war.",
+  "isbn": "",
   "omslag": "covers/paddington.jpg"
  },
  {
@@ -1351,6 +1418,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Poeh, Piglet en Iejoor beleven kleine, grote avonturen in het Honderd Bunderbos.",
+  "isbn": "",
   "omslag": "covers/winnie-de-poeh.jpg"
  },
  {
@@ -1371,6 +1439,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Heidi woont bij haar opa in de bergen en maakt vrienden met de geitenjongen Peter.",
+  "isbn": "",
   "omslag": "covers/heidi.jpg"
  },
  {
@@ -1391,6 +1460,7 @@ window.BOEKEN = [
    "paarden"
   ],
   "omschrijving": "Anne is een kletsend meisje met een enorme fantasie. Ze zorgt voor veel verwarring.",
+  "isbn": "",
   "omslag": "covers/anne-green-gables.jpg"
  },
  {
@@ -1411,6 +1481,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Jim vindt een schatkaart en vaart met piraten naar een geheimzinnig eiland.",
+  "isbn": "",
   "omslag": "covers/het-schateiland.jpg"
  },
  {
@@ -1430,6 +1501,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Robin Hood woont in het bos en neemt van de rijken om aan de armen te geven.",
+  "isbn": "",
   "omslag": "covers/robin-hood.jpg"
  },
  {
@@ -1449,6 +1521,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Phileas Fogg wedt dat hij in tachtig dagen de hele wereld rond kan reizen.",
+  "isbn": "",
   "omslag": "covers/in-tachtig-dagen.jpg"
  },
  {
@@ -1467,6 +1540,7 @@ window.BOEKEN = [
    "magie"
   ],
   "omschrijving": "Een houten pop komt tot leven. Maar elke leugen maakt zijn neus langer.",
+  "isbn": "",
   "omslag": "covers/pinokkio.jpg"
  },
  {
@@ -1488,6 +1562,7 @@ window.BOEKEN = [
    "kamperen"
   ],
   "omschrijving": "Vier kinderen en hun hond Tim vinden een schat op een eiland.",
+  "isbn": "",
   "omslag": "covers/de-vijf.jpg"
  },
  {
@@ -1506,6 +1581,7 @@ window.BOEKEN = [
    "honden"
   ],
   "omschrijving": "Zeven vrienden vormen een geheim genootschap en lossen mysteries op.",
+  "isbn": "",
   "omslag": "covers/de-zeven.jpg"
  },
  {
@@ -1526,6 +1602,7 @@ window.BOEKEN = [
    "techniek"
   ],
   "omschrijving": "Een jongen wordt wakker op een vreemd blokkeneiland en moet overleven.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -1546,6 +1623,7 @@ window.BOEKEN = [
    "muziek"
   ],
   "omschrijving": "Drie adoptiezusjes gaan naar een toneelschool en dromen van het podium.",
+  "isbn": "",
   "omslag": "covers/balletschoentjes.jpg"
  },
  {
@@ -1566,6 +1644,7 @@ window.BOEKEN = [
    "wetenschap"
   ],
   "omschrijving": "Alles over voetbal én de wereld: leer hoe voetbal werkt, met strips, quizzen en weetjes.",
+  "isbn": "",
   "omslag": "covers/football-school.jpg"
  },
  {
@@ -1588,6 +1667,7 @@ window.BOEKEN = [
    "gamen"
   ],
   "omschrijving": "De hoogste, grootste, snelste en gekste records van de hele wereld. Dit boek lees je overal.",
+  "isbn": "",
   "omslag": "covers/guinness-records.jpg"
  },
  {
@@ -1607,6 +1687,7 @@ window.BOEKEN = [
    "eten"
   ],
   "omschrijving": "Het kleine Gallische dorp biedt weerstand aan de Romeinen dankzij een toverdrank.",
+  "isbn": "",
   "omslag": "covers/asterix-galliers.jpg"
  },
  {
@@ -1627,6 +1708,7 @@ window.BOEKEN = [
    "vliegen"
   ],
   "omschrijving": "Kuifje en kapitein Haddock zoeken smokkelaars op zee en in de woestijn.",
+  "isbn": "",
   "omslag": null
  },
  {
@@ -1647,6 +1729,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Lucky Luke schiet sneller dan zijn schaduw en vangt de Daltons.",
+  "isbn": "",
   "omslag": "covers/lucky-luke.jpg"
  },
  {
@@ -1667,6 +1750,7 @@ window.BOEKEN = [
    "geschiedenis"
   ],
   "omschrijving": "Suske, Wiske, tante Sidonia en Lambik beleven stripavonturen door tijd en ruimte.",
+  "isbn": "",
   "omslag": "covers/suske-en-wiske.jpg"
  },
  {
@@ -1684,6 +1768,7 @@ window.BOEKEN = [
    "dieren"
   ],
   "omschrijving": "Donald Duck, Katrien, Kwik, Kwek en Kwak in stripverhalen vol grapjes.",
+  "isbn": "",
   "omslag": "covers/donald-duck-pocket.jpg"
  },
  {
@@ -1702,6 +1787,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Mees Kees is een enthousiaste meester die altijd iets bedenkt met zijn klas.",
+  "isbn": "",
   "omslag": "covers/mees-kees.jpg"
  },
  {
@@ -1721,6 +1807,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Vos en Haas zijn dikke vrienden en beleven samen grappige avonturen.",
+  "isbn": "",
   "omslag": "covers/vos-en-haas.jpg"
  },
  {
@@ -1742,6 +1829,7 @@ window.BOEKEN = [
    "detective"
   ],
   "omschrijving": "Muis Geronimo is journalist en belandt telkens in de gekste avonturen.",
+  "isbn": "",
   "omslag": "covers/geronimo-stilton.jpg"
  },
  {
@@ -1761,6 +1849,7 @@ window.BOEKEN = [
    "monsters"
   ],
   "omschrijving": "Griezelige verhalen die je hartslag doen versnellen.",
+  "isbn": "",
   "omslag": "covers/kippenvel.jpg"
  },
  {
@@ -1782,6 +1871,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Een gevaarlijke gevangene is ontsnapt en lijkt het op Harry gemunt te hebben.",
+  "isbn": "",
   "omslag": "covers/harry-potter-3.jpg"
  },
  {
@@ -1800,6 +1890,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Een hongerige krokodil bedenkt gemene plannen om kinderen te eten. Gelukkig zijn de andere dieren slim.",
+  "isbn": "",
   "omslag": "covers/reuzenkrokodil.jpg"
  },
  {
@@ -1819,6 +1910,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Danny en zijn vader wonen in een caravan en bedenken een geheim plan om fazanten te vangen.",
+  "isbn": "",
   "omslag": "covers/danny-kampioen.jpg"
  },
  {
@@ -1840,6 +1932,7 @@ window.BOEKEN = [
    "familie"
   ],
   "omschrijving": "Dennis houdt van voetbal en van mode. Op school gaat hij echt een jurk dragen!",
+  "isbn": "",
   "omslag": "covers/jongen-in-de-jurk.jpg"
  },
  {
@@ -1860,6 +1953,7 @@ window.BOEKEN = [
    "monsters"
   ],
   "omschrijving": "Een toverboek over alle magische dieren, van draken tot niffelaars.",
+  "isbn": "",
   "omslag": "covers/fabeldieren.jpg"
  },
  {
@@ -1879,6 +1973,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Het leven van het hertje Bambi in het bos, met vrienden zoals Stampertje.",
+  "isbn": "",
   "omslag": "covers/bambi.jpg"
  },
  {
@@ -1900,6 +1995,7 @@ window.BOEKEN = [
    "sport"
   ],
   "omschrijving": "Alec strandt op een eiland met een woeste zwarte hengst. Samen worden ze vrienden en kampioenen.",
+  "isbn": "",
   "omslag": "covers/zwarte-hengst.jpg"
  },
  {
@@ -1920,6 +2016,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Lassie loopt honderden kilometers om terug te keren naar haar baasje.",
+  "isbn": "",
   "omslag": "covers/lassie.jpg"
  },
  {
@@ -1940,6 +2037,7 @@ window.BOEKEN = [
    "natuur"
   ],
   "omschrijving": "Tom is een ondeugende jongen aan de rivier die altijd in de problemen komt.",
+  "isbn": "",
   "omslag": "covers/tom-sawyer.jpg"
  },
  {
@@ -1960,6 +2058,7 @@ window.BOEKEN = [
    "piraten"
   ],
   "omschrijving": "Robinson strandt alleen op een onbewoond eiland en moet leren overleven.",
+  "isbn": "",
   "omslag": "covers/robinson-crusoe.jpg"
  },
  {
@@ -1980,6 +2079,7 @@ window.BOEKEN = [
    "reizen"
   ],
   "omschrijving": "Kapitein Nemo vaart met zijn onderzeeër Nautilus door de diepste zeeën.",
+  "isbn": "",
   "omslag": "covers/20000-mijlen.jpg"
  },
  {
@@ -1999,6 +2099,7 @@ window.BOEKEN = [
    "vriendschap"
   ],
   "omschrijving": "Kruimeltje is een arme jongen die zich redt in de stad en toch zijn vrolijkheid houdt.",
+  "isbn": "",
   "omslag": "covers/kruimeltje.jpg"
  }
 ];

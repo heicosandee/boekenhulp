@@ -16,7 +16,7 @@ with open(os.path.join(root, "boeken.csv"), encoding="utf-8-sig", newline="") as
         boeken.append(dict(
             id=r["id"].strip(), titel=r["titel"].strip(), auteur=r["auteur"].strip(),
             niveau=int(r["niveau"]), dikte=int(r["dikte"]), plaatjes=int(r["plaatjes"]), serie=r["serie"].strip() in ("1", "ja", "x"),
-            genres=r["genres"].split(), themas=r["themas"].split(), omschrijving=r["omschrijving"].strip(), omslag=omslag))
+            genres=r["genres"].split(), themas=r["themas"].split(), omschrijving=r["omschrijving"].strip(), isbn=(r.get("isbn") or "").replace("-", "").strip(), omslag=omslag))
 with open(os.path.join(root, "books.js"), "w", encoding="utf-8") as f:
     f.write("// Gegenereerd door tools/maak_boeken.py uit boeken.csv. Niet met de hand aanpassen.\nwindow.BOEKEN = " + json.dumps(boeken, ensure_ascii=False, indent=1) + ";\n")
 print(len(boeken), "boeken,", sum(1 for b in boeken if b["omslag"]), "met omslag")
